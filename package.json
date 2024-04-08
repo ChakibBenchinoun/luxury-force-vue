@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "luxury-force-vue-db",
   "private": true,
   "type": "module",
   "scripts": {
@@ -7,11 +7,55 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "vue-tsc --noEmit",
+    "db:generate": "drizzle-kit generate:sqlite",
+    "db:drop": "drizzle-kit drop",
+    "db:migrate": "wrangler d1 migrations apply roobinhoodltd  --local",
+    "db:migrate:prod": "wrangler d1 migrations apply roobinhoodltd",
+    "db:studio": "drizzle-kit studio",
+    "db:studio:local": "cross-env LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit) drizzle-kit studio",
+    "db:clean-start": "rm -rf .wrangler ./server/db/migrations && bun db:generate && bun db:migrate"
   },
   "dependencies": {
     "nuxt": "^3.11.2",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "@lucia-auth/adapter-sqlite": "^3.0.1",
+    "@vee-validate/zod": "^4.12.6",
+    "@vueuse/core": "^10.9.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "drizzle-orm": "^0.30.4",
+    "lucia": "^3.1.1",
+    "lucide-vue-next": "^0.363.0",
+    "nuxt-icon": "^0.6.10",
+    "radix-vue": "^1.5.3",
+    "tailwind-merge": "^2.2.2",
+    "tailwindcss-animate": "^1.0.7",
+    "vee-validate": "^4.12.6",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.9.0",
+    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxtjs/tailwindcss": "^6.11.4",
+    "@types/better-sqlite3": "^7.6.9",
+    "better-sqlite3": "^9.4.3",
+    "cross-env": "^7.0.3",
+    "drizzle-kit": "^0.20.14",
+    "eslint": "npm:eslint-ts-patch@^8.57.0-0",
+    "eslint-plugin-format": "^0.1.0",
+    "eslint-ts-patch": "^8.57.0-0",
+    "nitro-cloudflare-dev": "^0.1.3",
+    "nuxt-module-eslint-config": "^0.1.1",
+    "shadcn-nuxt": "^0.10.2",
+    "tiny-invariant": "^1.3.3",
+    "typescript": "^5.4.3",
+    "valibot": "^0.30.0",
+    "vue-tsc": "^2.0.7",
+    "wrangler": "^3.37.0"
   }
 }

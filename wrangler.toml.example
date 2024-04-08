@@ -1,0 +1,6 @@
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "roobinhoodltd"
+database_id = "ace2614f-4e42-4a03-b007-f79c51364db8"
+preview_database_id = "DB"
+migrations_dir = "./server/db/migrations"
